@@ -4,6 +4,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+  color: #beb;
+}
+
+a:visited {
+  color: #797;
+}
+
 #list {
   display: grid;
   grid-auto-columns: max-content;
@@ -91,6 +99,7 @@ body {
 }
 
 .shrink {
+  transform-origin: 30% 50%;
   animation: shrink .3s ease-in 1 forwards;
 }
 
