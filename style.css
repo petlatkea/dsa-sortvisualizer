@@ -1,0 +1,150 @@
+body {
+  background-color: #666;
+  color: #6b6;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#list {
+  display: grid;
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
+  gap: .5rem;
+
+  margin-block-start: 80px;
+  padding: 1em;
+  border: 2px solid #555;
+  width: fit-content;
+}
+
+.item {
+  width: 64px;
+  aspect-ratio: 1 / 1;
+  border: 1px dotted #aaa;
+  background-color: #555;
+
+  font-size: 300%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: translate 1s;
+}
+
+/**** ARROWS ****/
+
+#pointers {
+  position: relative;
+}
+
+.arrow {
+  width: 80px;
+  aspect-ratio: 1 / 1.22;
+  background-size: 100%;
+  translate: -50px -16px;
+  transition: translate 1s;
+  position: absolute;
+  transform-origin: center left;
+  animation: fade_in .5s ease-in 1 forwards;
+}
+
+.arrow.blue {
+  background-image: url(images/blue_arrow.png);
+}
+
+.arrow.orange {
+  background-image: url(images/orange_arrow.png);
+}
+
+.arrow.green {
+  background-image: url(images/green_arrow.png);
+}
+
+/**** ANIMATIONS and TRANSITIONS ****/
+
+@keyframes fade_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+  
+}
+
+.no_transitions {
+  transition-duration: 0s;
+}
+
+.pull_up {
+  translate: 0 -110%;
+}
+
+.pull_down {
+  translate: 0 140%;
+}
+
+.shift_right {
+  translate: calc(100% + .5rem) 0;
+}
+
+.shift_left {
+  translate: calc(-100% - .5rem) 0;
+}
+
+.shrink {
+  animation: shrink .3s ease-in 1 forwards;
+}
+
+@keyframes shrink {
+  to {
+    scale: 0;
+  }
+  
+}
+
+.shift {
+  --dist_x: calc(64px + .5em);
+  animation: swap_x .5s linear 1 forwards;
+}
+
+.swap {
+  --dist_x: calc(64px + .5em);
+  animation: swap_x 1s linear 1 forwards;
+}
+
+@keyframes swap_x {
+  0% {
+    transform: translateX(0);
+  }  
+  100% {
+    transform: translateX(var(--dist_x));
+  }
+}
+
+@keyframes swap_y {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.insert {
+  animation: insert 1s linear 1 forwards; 
+}
+
+@keyframes insert {
+  0% {
+    translate: var(--delta_x) var(--delta_y);
+  }
+  50% {
+    translate: 0 var(--delta_y);
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+
